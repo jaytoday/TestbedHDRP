@@ -12,24 +12,24 @@ public sealed class Regenerator : MonoBehaviour, ITimeControl, IPropertyPreview
 
     [SerializeField, Range(0, 1)] float _cellDensity = 0.05f;
     [SerializeField] float _cellSize = 0.1f;
-    [SerializeField] Transform _cellDirection;
+    [SerializeField] Transform _cellDirection = null;
 
     [SerializeField] float _inflation = 1;
-    [SerializeField] float _fluctuation = 1;
+    [SerializeField] float _stretch = 5;
 
-    [SerializeField, ColorUsage(false, true)] Color _emissionColor;
-    [SerializeField, ColorUsage(false, true)] Color _edgeColor;
+    [SerializeField, ColorUsage(false, true)] Color _emissionColor = Color.black;
+    [SerializeField, ColorUsage(false, true)] Color _edgeColor = Color.white;
     [SerializeField, Range(0, 8)] float _edgeWidth = 1;
-    [SerializeField, Range(0, 1)] float _hueShift;
+    [SerializeField, Range(0, 1)] float _hueShift = 0;
     [SerializeField, Range(0, 1)] float _highlight = 0.2f;
 
-    [SerializeField] Renderer[] _renderers;
+    [SerializeField] Renderer[] _renderers = null;
 
     void OnValidate()
     {
         _cellSize = Mathf.Max(0, _cellSize);
         _inflation = Mathf.Max(0, _inflation);
-        _fluctuation = Mathf.Max(0, _fluctuation);
+        _stretch = Mathf.Max(0, _stretch);
     }
 
     #endregion
@@ -133,7 +133,7 @@ public sealed class Regenerator : MonoBehaviour, ITimeControl, IPropertyPreview
         if ((_prevEffectPlane - plane).magnitude > 100) _prevEffectPlane = plane;
 
         var cparams = new Vector3(_cellDensity, _cellSize, _highlight);
-        var aparams = new Vector3(_inflation, _fluctuation);
+        var aparams = new Vector3(_inflation, _stretch);
         var cspace1 = _cellDirection != null ? _cellDirection.right : Vector3.right;
         var cspace2 = _cellDirection != null ? _cellDirection.up : Vector3.up;
         var emission = ColorToHsvm(_emissionColor);

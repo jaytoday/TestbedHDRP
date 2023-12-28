@@ -4,31 +4,27 @@ TestbedHDRP
 ![gif](https://i.imgur.com/2qlNtFC.gif)
 ![gif](https://i.imgur.com/K3k5ffi.gif)
 
-![gif](https://i.imgur.com/RQHKvIc.gif)
-![gif](https://i.imgur.com/89atwYZ.gif)
+![gif](https://i.imgur.com/m7lKcUh.gif)
+![gif](https://i.imgur.com/p29Lrap.gif)
 
-This is a testbed project for [Unity HDRP] (High Definition Render Pipeline).
-It contains several scenes that aim to try out the new functionalities of HDRP.
-Please note that they're not necessarily useful nor showing right use of the
-functionalities. I'm just trying to explore the possibilities of the new
-features.
+TestbedHDRP is a Unity project where I try custom effect ideas with
+[Unity HDRP]. Currently, it only contains the following two types of effects:
 
-[Unity HDRP]: https://github.com/Unity-Technologies/ScriptableRenderPipeline/wiki/High-Definition-Render-Pipeline-overview
+- Geometry shader effects
+- Many-light effects
+
+Although the geometry shader effects are fun and exciting to use, I don't
+recommend using them in production. **The geometry shader is near-obsolete
+technology.** You will meet several problems if you use it in your product.
+
+The many-light effects are mainly for benchmark purposes. I just wanted to know
+how I could utilize the power of FPTL.
+
+[Unity HDRP]:
+  https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@latest
 
 System requirements
 -------------------
 
-- Unity 2018.2 or later
-
-How to use the project
-----------------------
-
-This repository includes some [submodules]. Before opening the project with
-Unity, not only the repository itself but also these submodules have to be
-synced up.
-
-If you're using Git from the command line, please run `git submodule init` and
-`git submodule update` in the project directory to sync the submodules. Or you
-can just use the `--recursive` option when initially cloning the repository.
-
-[submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+- Unity 2019.4
+- HDRP 7.4
